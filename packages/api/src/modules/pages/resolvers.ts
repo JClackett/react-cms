@@ -5,14 +5,17 @@ const resolvers: IResolvers = {
   Query: {
     listPages: async (_, __, { req }) => {
       if (!req.session || !req.session.userId) throw new Error("unauthorized");
-      const pages = await Page.find({ relations: ["collections"] });
+      const pages = await Page.find();
       return pages;
     },
-    findPage: async (_, { id }, { req, connection }) => {
+    findPage: async (_, { slug }, { req, connection }) => {
       if (!req.session || !req.session.userId) throw new Error("unauthorized");
       const page = await connection
         .getRepository(Page)
-        .findOne(id, { relations: ["collections", "collections.blocks"] });
+        .findOne(
+          { where: { slug } },
+          { relations: ["collections", "collections.blocks"] }
+        );
       if (!page) throw new Error("not found");
       return page;
     }

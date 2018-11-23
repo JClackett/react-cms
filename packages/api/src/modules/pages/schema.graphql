@@ -7,7 +7,7 @@ type Page {
 
 type Query {
 	listPages: [Page]
-	findPage(id: String!): Page
+	findPage(slug: String!): Page
 }
 
 type Mutation {
