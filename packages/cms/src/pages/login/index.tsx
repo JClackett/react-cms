@@ -2,14 +2,9 @@ import React, { memo, useContext } from "react";
 import { Mutation } from "react-apollo";
 import LoginForm from "./LoginForm";
 import styled from "styled-components";
-import { LOGIN, REGISTER, ME } from "../../graphql/queries";
+import { LOGIN, ME } from "../../graphql/queries";
 import { AppContext } from "../../application/context";
-import {
-  LoginVariables,
-  Login,
-  RegisterVariables,
-  Register
-} from "../../graphql/types";
+import { LoginVariables, Login } from "../../graphql/types";
 import { Redirect } from "@reach/router";
 
 function LoginPage(): any {

@@ -13,8 +13,8 @@ function Home(): any {
           <div>
             <h2>Home</h2>
             {data.listPages.map((page: any) => (
-              <Link to={`/${page.slug}`}>
-                <PageCard key={page.slug}>
+              <Link to={`/${page.slug}`} key={page.slug}>
+                <PageCard>
                   <h4>{page.name}</h4>
                   <p>{page.slug}</p>
                 </PageCard>
