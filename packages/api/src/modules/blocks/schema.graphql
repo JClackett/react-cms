@@ -1,0 +1,9 @@
+type Block {
+	id: ID!
+	type: String!
+	content: String
+}
+
+type Mutation {
+	createBlock(type: String!, content: String, page: String!): Block
+}

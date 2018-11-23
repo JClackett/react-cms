@@ -1,0 +1,13 @@
+{
+	"name": "root",
+	"private": true,
+	"version": "1.0.0",
+	"description": "A CMS built in react",
+	"author": "No Quarter",
+	"license": "MIT",
+	"workspaces": {
+		"packages": [
+			"packages/*"
+		]
+	}
+}

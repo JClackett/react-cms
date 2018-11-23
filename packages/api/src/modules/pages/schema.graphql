@@ -1,0 +1,15 @@
+type Page {
+	id: ID!
+	name: String!
+	slug: String!
+	blocks: [Block]
+}
+
+type Query {
+	listPages: [Page]
+	findPage(id: String!): Page
+}
+
+type Mutation {
+	createPage(name: String!, slug: String!): Page
+}
