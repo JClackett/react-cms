@@ -23,40 +23,43 @@ const corsUrl =
   env == "production" ? "https://some-url.com" : "http://localhost:3000";
 
 const startServer = async () => {
-  const server = new ApolloServer({
-    // These will be defined for both new or existing servers
-    ...schema,
-    introspection: true,
-    context: ({ req, res }: any) => ({ req, res })
-  });
+  try {
+    const connection = await createConnection();
+    const server = new ApolloServer({
+      // These will be defined for both new or existing servers
+      ...schema,
+      introspection: true,
+      context: ({ req, res }: any) => ({ req, res, connection })
+    });
 
-  await createConnection();
+    const app = express();
 
-  const app = express();
+    app.use(morgan("dev")).use(
+      session({
+        store: new RedisStore(redisOptions[env]),
+        secret: "superSecurePass",
+        resave: false,
+        cookie: {
+          maxAge: 432000000
+        },
+        saveUninitialized: false
+      })
+    );
 
-  app.use(morgan("dev")).use(
-    session({
-      store: new RedisStore(redisOptions[env]),
-      secret: "superSecurePass",
-      resave: false,
-      cookie: {
-        maxAge: 432000000
-      },
-      saveUninitialized: false
-    })
-  );
+    server.applyMiddleware({
+      app,
+      cors: {
+        credentials: true,
+        origin: corsUrl
+      }
+    });
 
-  server.applyMiddleware({
-    app,
-    cors: {
-      credentials: true,
-      origin: corsUrl
-    }
-  });
-
-  app.listen({ port: process.env.PORT || 5000 }, () =>
-    console.log(`Server ready on port ${process.env.PORT || 5000} 🚀`)
-  );
+    app.listen({ port: process.env.PORT || 5000 }, () =>
+      console.log(`Server ready on port ${process.env.PORT || 5000} 🚀`)
+    );
+  } catch (error) {
+    console.log("Oops! somethings wrong 😢:", error.message);
+  }
 };
 
 startServer();

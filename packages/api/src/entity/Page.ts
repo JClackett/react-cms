@@ -5,7 +5,7 @@ import {
   BaseEntity,
   OneToMany
 } from "typeorm";
-import { Block } from ".";
+import { Collection } from ".";
 
 @Entity("pages")
 export default class Page extends BaseEntity {
@@ -18,6 +18,6 @@ export default class Page extends BaseEntity {
   @Column("text", { unique: true })
   slug: string;
 
-  @OneToMany(() => Block, block => block.page)
-  blocks: Block[];
+  @OneToMany(() => Collection, collection => collection.page)
+  collections: Collection[];
 }

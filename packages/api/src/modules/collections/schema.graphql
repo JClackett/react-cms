@@ -1,0 +1,9 @@
+type Collection {
+	id: ID!
+	name: String!
+	blocks: [Block]
+}
+
+type Mutation {
+	createCollection(name: String!, page: String!): Collection
+}

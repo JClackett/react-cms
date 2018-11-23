@@ -5,5 +5,5 @@ type Block {
 }
 
 type Mutation {
-	createBlock(type: String!, content: String, page: String!): Block
+	createBlock(type: String!, content: String, collection: String!): Block
 }

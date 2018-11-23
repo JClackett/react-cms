@@ -5,7 +5,7 @@ import {
   BaseEntity,
   ManyToOne
 } from "typeorm";
-import { Page } from ".";
+import { Collection } from ".";
 
 @Entity("blocks")
 export default class Block extends BaseEntity {
@@ -20,6 +20,6 @@ export default class Block extends BaseEntity {
   @Column("text", { nullable: true })
   content: string;
 
-  @ManyToOne(() => Page, page => page.blocks)
-  page: Page;
+  @ManyToOne(() => Collection, collection => collection.blocks)
+  collection: Collection;
 }
