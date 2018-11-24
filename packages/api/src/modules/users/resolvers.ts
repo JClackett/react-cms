@@ -26,6 +26,8 @@ const resolvers: IResolvers = {
       const valid = await bcrypt.compare(password, user.password);
       if (!valid) throw new Error("Invalid name or password");
       req.session.userId = user.id;
+      console.log("whattt");
+
       return user;
     },
     logout: async (_, __, { req, res }) => {

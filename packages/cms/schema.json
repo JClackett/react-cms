@@ -34,7 +34,7 @@
             "description": "",
             "args": [
               {
-                "name": "id",
+                "name": "slug",
                 "description": "",
                 "type": {
                   "kind": "NON_NULL",
@@ -57,7 +57,7 @@
             "deprecationReason": null
           },
           {
-            "name": "getSiteProperties",
+            "name": "getSiteSettings",
             "description": "",
             "args": [],
             "type": {
@@ -65,7 +65,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "SiteProperty",
+                "name": "SiteSetting",
                 "ofType": null
               }
             },
@@ -301,7 +301,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "SiteProperty",
+        "name": "SiteSetting",
         "description": "",
         "fields": [
           {
@@ -490,20 +490,6 @@
                   }
                 },
                 "defaultValue": null
-              },
-              {
-                "name": "page",
-                "description": "",
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
               }
             ],
             "type": {
@@ -556,7 +542,7 @@
             "deprecationReason": null
           },
           {
-            "name": "createSiteProperty",
+            "name": "createSiteSetting",
             "description": "",
             "args": [
               {
@@ -590,7 +576,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "SiteProperty",
+              "name": "SiteSetting",
               "ofType": null
             },
             "isDeprecated": false,

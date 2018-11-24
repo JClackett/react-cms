@@ -1,0 +1,12 @@
+type SiteSetting {
+	id: ID!
+	name: String!
+	value: String!
+}
+
+type Query {
+	getSiteSettings: [SiteSetting]
+}
+type Mutation {
+	createSiteSetting(name: String!, value: String!): SiteSetting
+}

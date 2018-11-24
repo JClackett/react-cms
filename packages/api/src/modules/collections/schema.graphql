@@ -5,5 +5,5 @@ type Collection {
 }
 
 type Mutation {
-	createCollection(name: String!, page: String!): Collection
+	createCollection(name: String!): Collection
 }

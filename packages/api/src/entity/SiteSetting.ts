@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
 
-@Entity("siteProperties")
-export default class SiteProperty extends BaseEntity {
+@Entity("siteSettings")
+export default class SiteSetting extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id: number;
 

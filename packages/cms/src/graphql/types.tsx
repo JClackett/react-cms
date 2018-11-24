@@ -73,6 +73,60 @@ export interface RegisterVariables {
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL query operation: ListPages
+// ====================================================
+
+export interface ListPages_listPages {
+  __typename: "Page";
+  id: string;
+  name: string;
+  slug: string;
+}
+
+export interface ListPages {
+  listPages: (ListPages_listPages | null)[] | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: FindPage
+// ====================================================
+
+export interface FindPage_findPage_collections_blocks {
+  __typename: "Block";
+  id: string;
+  type: string;
+}
+
+export interface FindPage_findPage_collections {
+  __typename: "Collection";
+  id: string;
+  name: string;
+  blocks: (FindPage_findPage_collections_blocks | null)[] | null;
+}
+
+export interface FindPage_findPage {
+  __typename: "Page";
+  id: string;
+  name: string;
+  slug: string;
+  collections: (FindPage_findPage_collections | null)[] | null;
+}
+
+export interface FindPage {
+  findPage: FindPage_findPage | null;
+}
+
+export interface FindPageVariables {
+  slug: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================

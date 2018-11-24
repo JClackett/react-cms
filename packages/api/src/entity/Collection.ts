@@ -3,8 +3,8 @@ import {
   PrimaryGeneratedColumn,
   Column,
   BaseEntity,
-  ManyToOne,
-  OneToMany
+  OneToMany,
+  ManyToMany
 } from "typeorm";
 import { Page, Block } from ".";
 
@@ -16,8 +16,8 @@ export default class Collection extends BaseEntity {
   @Column("text")
   name: string;
 
-  @ManyToOne(() => Page, page => page.collections)
-  page: Page;
+  @ManyToMany(() => Page, page => page.collections)
+  pages: Page[];
 
   @OneToMany(() => Block, block => block.collection)
   blocks: Block[];

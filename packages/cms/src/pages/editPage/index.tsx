@@ -31,4 +31,4 @@ const PageCard = styled.div`
   margin: 40px;
 `;
 
-export default EditPage;
+export default memo(EditPage);

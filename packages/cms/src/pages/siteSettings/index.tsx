@@ -1,23 +1,21 @@
 import React, { memo } from "react";
 import { Query } from "react-apollo";
 import { LIST_PAGES } from "../../graphql/queries";
-import { ListPages } from "../../graphql/types";
-
 import { Card } from "antd";
 import { Link } from "@reach/router";
 
-function Home(_: any) {
+function SiteSettings(_: any) {
   return (
-    <Query<ListPages> query={LIST_PAGES}>
+    <Query query={LIST_PAGES}>
       {({ data, error, loading }) => {
         if (loading || error || !data || !data.listPages) return null;
         return (
           <div>
-            <h2>Home</h2>
-            {data.listPages.map(({ slug, name }: any) => (
-              <Card key={slug} title={name} style={{ width: 300 }}>
-                <Link to={`/${slug}`} key={slug}>
-                  <p>{slug}</p>
+            <h2>Site settings</h2>
+            {data.listPages.map((page: any) => (
+              <Card key={page.slug} title={page.name} style={{ width: 300 }}>
+                <Link to={`/${page.slug}`} key={page.slug}>
+                  <p>{page.slug}</p>
                 </Link>
               </Card>
             ))}
@@ -28,4 +26,4 @@ function Home(_: any) {
   );
 }
 
-export default memo(Home);
+export default memo(SiteSettings);

@@ -1,16 +1,13 @@
-import React, { memo, useContext } from "react";
+import React, { memo } from "react";
 import { Mutation } from "react-apollo";
 import LoginForm from "./LoginForm";
 import styled from "styled-components";
 import { LOGIN, ME } from "../../graphql/queries";
-import { AppContext } from "../../application/context";
 import { LoginVariables, Login } from "../../graphql/types";
-import { Redirect } from "@reach/router";
 
 function LoginPage(): any {
-  const { user } = useContext(AppContext);
-  return !user ? (
-    <AuthBoard>
+  return (
+    <StyledLogin>
       <Mutation<Login, LoginVariables>
         mutation={LOGIN}
         update={(cache, { data }) => {
@@ -26,22 +23,23 @@ function LoginPage(): any {
           />
         )}
       </Mutation>
-    </AuthBoard>
-  ) : (
-    <Redirect to="/" noThrow />
+    </StyledLogin>
   );
 }
 
-export default LoginPage;
+export default memo(LoginPage);
 
-const AuthBoard = styled.div`
+const StyledLogin = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  margin: 0 auto;
-  max-width: 600px;
-  padding: ${props => props.theme.paddingLarge};
-  background-color: ${props => props.theme.colorBoard};
-  border-radius: ${props => props.theme.borderRadius};
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
 `;

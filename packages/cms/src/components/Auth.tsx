@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, memo } from "react";
 import { AppContext } from "../application/context";
 import LoginPage from "../pages/login";
 
@@ -7,4 +7,4 @@ function Auth(props: any) {
   return user ? props.children : <LoginPage />;
 }
 
-export default Auth;
+export default memo(Auth);

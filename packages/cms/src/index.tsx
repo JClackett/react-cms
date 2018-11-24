@@ -2,11 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
 import { createGlobalStyle } from "styled-components";
-
 import * as serviceWorker from "./serviceWorker";
-
 import Application from "./application";
+
+import "./index.css";
 
 const uri =
   process.env.NODE_ENV == "production"
@@ -34,8 +35,10 @@ const GlobalStyle = createGlobalStyle`
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <GlobalStyle />
-    <Application client={client} />
+    <ApolloHooksProvider client={client}>
+      <GlobalStyle />
+      <Application />
+    </ApolloHooksProvider>
   </ApolloProvider>,
   document.getElementById("root")
 );

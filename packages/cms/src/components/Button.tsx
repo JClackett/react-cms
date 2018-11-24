@@ -1,33 +1,17 @@
-import React, { SFC } from "react";
-import styled from "styled-components";
+import React, { SFC, memo } from "react";
+import { Button as AntButton } from "antd";
 
 const Button: SFC<any> = props => {
   return (
-    <StyledButton
-      type="submit"
-      primary={props.primary}
+    <AntButton
       onClick={props.onClick}
-      {...props}
+      type={props.type}
+      block
+      htmlType="submit"
     >
       {props.text}
-    </StyledButton>
+    </AntButton>
   );
 };
 
-export default Button;
-
-const StyledButton = styled<any>("button")`
-  outline: 0;
-  cursor: pointer;
-  font-family: inherit;
-  min-width: 180px;
-  font-size: 1.2rem;
-  border: 0;
-  color: ${props =>
-    props.primary ? props.theme.colorBackground : props.theme.colorPrimary};
-  background-color: ${props =>
-    props.primary ? props.theme.colorPrimary : "transparent"};
-  border: 2px solid ${props => props.theme.colorPrimary};
-  border-radius: ${props => props.theme.borderRadius};
-  padding: ${props => props.theme.paddingSmall};
-`;
+export default memo(Button);

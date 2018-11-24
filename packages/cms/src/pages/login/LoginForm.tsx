@@ -2,6 +2,7 @@ import React, { useState, memo } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import { LoginVariables } from "../../graphql/types";
+import { Form } from "antd";
 
 interface UserProps {
   handleLogin: (user: LoginVariables) => void;
@@ -26,7 +27,7 @@ function LoginForm(props: UserProps) {
   return (
     <StyledForm>
       <Header>Login</Header>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Input
           name="name"
           type="text"
@@ -48,14 +49,12 @@ function LoginForm(props: UserProps) {
           }}
         />
         <Seperator />
-        <FormButtons>
-          <Button text="submit" primary />
-        </FormButtons>
+        <Button text="submit" type="primary" />
         {error &&
           error.map(({ message }: any, i: number) => (
             <Error key={i}>{message}</Error>
           ))}
-      </form>
+      </Form>
     </StyledForm>
   );
 }
@@ -63,6 +62,7 @@ export default memo(LoginForm);
 
 const StyledForm = styled.div`
   width: 100%;
+  max-width: 400px;
 `;
 
 const Header = styled.h2`
@@ -88,13 +88,6 @@ const Input = styled.input`
   &::placeholder {
     font-size: 1rem;
   }
-`;
-
-const FormButtons = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
 `;
 
 const Error = styled.p`

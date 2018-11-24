@@ -2,29 +2,37 @@ import React, { memo } from "react";
 import { Query } from "react-apollo";
 import { Router } from "@reach/router";
 import styled, { ThemeProvider } from "styled-components";
-
+import { useApolloClient } from "react-apollo-hooks";
+import { Spin, Icon } from "antd";
 import { theme } from "./themes";
 import { AppContext } from "./context";
 
-import Login from "../pages/login";
 import Home from "../pages/home";
 import EditPage from "../pages/editPage";
+import SiteSettings from "../pages/siteSettings";
+
 import Sidebar from "../components/Sidebar";
 import Auth from "../components/Auth";
 import { ME } from "../graphql/queries";
 
-interface AppI {
-  client: any;
-}
-function Application(props: AppI) {
+function Application(props: any) {
+  const client: any = useApolloClient();
   const handleLogout = () => {
-    props.client.resetStore();
+    client.resetStore();
   };
-
   return (
     <Query query={ME}>
       {({ loading, data, error }) => {
-        if (loading) return <div>loading...</div>;
+        if (loading)
+          return (
+            <Loader>
+              <Spin
+                indicator={
+                  <Icon type="loading" style={{ fontSize: 30 }} spin />
+                }
+              />
+            </Loader>
+          );
         if (error) return <div>oops!</div>;
         const user = data && data.me;
         return (
@@ -35,17 +43,18 @@ function Application(props: AppI) {
             }}
           >
             <ThemeProvider theme={theme}>
-              <div>
-                <Sidebar />
+              <Auth>
                 <Wrapper>
-                  <Auth>
+                  <Sidebar />
+                  <Content>
                     <Router>
                       <Home path="/" />
+                      <SiteSettings path="/settings" />
                       <EditPage path="/:slug" />
                     </Router>
-                  </Auth>
+                  </Content>
                 </Wrapper>
-              </div>
+              </Auth>
             </ThemeProvider>
           </AppContext.Provider>
         );
@@ -56,8 +65,20 @@ function Application(props: AppI) {
 
 export default memo(Application);
 
-const Wrapper = styled.div`
+const Loader = styled.div`
+  height: 100vh;
   width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+`;
+
+const Content = styled.div`
+  width: calc(100vw - 250px);
   min-height: 100vh;
   padding: 0 ${props => props.theme.paddingLarge};
   padding-bottom: ${props => props.theme.paddingLarge};
