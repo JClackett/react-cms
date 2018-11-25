@@ -4,6 +4,10 @@ type Collection {
 	blocks: [Block]
 }
 
+type Query {
+	listCollections: [Collection]
+}
+
 type Mutation {
 	createCollection(name: String!): Collection
 }

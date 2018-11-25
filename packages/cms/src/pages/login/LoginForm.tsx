@@ -2,7 +2,7 @@ import React, { useState, memo } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import { LoginVariables } from "../../graphql/types";
-import { Form } from "antd";
+import { Form, Input, Icon } from "antd";
 
 interface UserProps {
   handleLogin: (user: LoginVariables) => void;
@@ -11,9 +11,11 @@ interface UserProps {
 function LoginForm(props: UserProps) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState([]);
 
   const handleSubmit = async (e: any) => {
+    setLoading(true);
     e.preventDefault();
     if (!name || !password) return;
     const user = { name, password };
@@ -21,6 +23,7 @@ function LoginForm(props: UserProps) {
       await props.handleLogin(user);
     } catch (error) {
       setError(error.graphQLErrors);
+      setLoading(false);
     }
   };
 
@@ -31,25 +34,30 @@ function LoginForm(props: UserProps) {
         <Input
           name="name"
           type="text"
-          placeholder="name"
+          prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+          placeholder="Name"
+          size="large"
           value={name}
           onChange={e => {
             e.preventDefault();
             setName(e.target.value);
           }}
         />
+        <Spacer />
         <Input
           name="password"
           type="password"
-          placeholder="password"
+          prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+          placeholder="Password"
+          size="large"
           value={password}
           onChange={e => {
             e.preventDefault();
             setPassword(e.target.value);
           }}
         />
-        <Seperator />
-        <Button text="submit" type="primary" />
+        <Spacer />
+        <Button text="Submit" type="primary" size="large" loading={loading} />
         {error &&
           error.map(({ message }: any, i: number) => (
             <Error key={i}>{message}</Error>
@@ -69,25 +77,8 @@ const Header = styled.h2`
   margin-top: 0;
 `;
 
-const Seperator = styled.div`
+const Spacer = styled.div`
   margin: ${props => props.theme.paddingMedium};
-`;
-
-const Input = styled.input`
-  width: 100%;
-  margin: 0;
-  font-family: inherit;
-  outline: none;
-  font-size: 1rem;
-  border: 2px solid black;
-  margin-bottom: ${props => props.theme.paddingMedium};
-  background-color: ${props => props.theme.colorBackground};
-  border-radius: ${props => props.theme.borderRadius};
-  padding: ${props => props.theme.paddingMedium};
-
-  &::placeholder {
-    font-size: 1rem;
-  }
 `;
 
 const Error = styled.p`

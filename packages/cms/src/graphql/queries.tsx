@@ -60,3 +60,17 @@ export const FIND_PAGE = gql`
     }
   }
 `;
+
+export const LIST_COLLECTIONS = gql`
+  query ListCollections {
+    listCollections {
+      id
+      name
+      blocks {
+        id
+        type
+        content
+      }
+    }
+  }
+`;

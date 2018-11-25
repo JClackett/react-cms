@@ -1,13 +1,15 @@
-import React, { memo } from "react";
+import React, { memo, Suspense } from "react";
 import { Query } from "react-apollo";
 import { Router } from "@reach/router";
 import styled, { ThemeProvider } from "styled-components";
 import { useApolloClient } from "react-apollo-hooks";
-import { Spin, Icon } from "antd";
+import { Spin, Icon, Layout } from "antd";
 import { theme } from "./themes";
 import { AppContext } from "./context";
 
 import Home from "../pages/home";
+import Pages from "../pages/pages";
+import Collections from "../pages/collections";
 import EditPage from "../pages/editPage";
 import SiteSettings from "../pages/siteSettings";
 
@@ -44,16 +46,27 @@ function Application(props: any) {
           >
             <ThemeProvider theme={theme}>
               <Auth>
-                <Wrapper>
-                  <Sidebar />
-                  <Content>
-                    <Router>
-                      <Home path="/" />
-                      <SiteSettings path="/settings" />
-                      <EditPage path="/:slug" />
-                    </Router>
-                  </Content>
-                </Wrapper>
+                <Layout>
+                  <Layout.Sider theme="light">
+                    <Sidebar />
+                  </Layout.Sider>
+                  <Layout.Content style={{ padding: theme.paddingMedium }}>
+                    <Suspense
+                      maxDuration={1000}
+                      fallback={
+                        <Icon type="loading" style={{ fontSize: 30 }} spin />
+                      }
+                    >
+                      <Router>
+                        <Home path="/" />
+                        <Pages path="/pages" />
+                        <Collections path="/collections" />
+                        <SiteSettings path="/settings" />
+                        <EditPage path="/:slug" />
+                      </Router>
+                    </Suspense>
+                  </Layout.Content>
+                </Layout>
               </Auth>
             </ThemeProvider>
           </AppContext.Provider>
@@ -71,17 +84,4 @@ const Loader = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-`;
-
-const Content = styled.div`
-  width: calc(100vw - 250px);
-  min-height: 100vh;
-  padding: 0 ${props => props.theme.paddingLarge};
-  padding-bottom: ${props => props.theme.paddingLarge};
-  background-color: ${props => props.theme.colorBackground};
-  position: relative;
 `;

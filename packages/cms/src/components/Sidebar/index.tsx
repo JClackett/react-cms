@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Button from "../Button";
 import { LOGOUT } from "../../graphql/queries";
 import Menu from "./Menu";
+import Sider from "antd/lib/layout/Sider";
 
 function Sidebar() {
   const context = useContext(AppContext);
@@ -36,7 +37,6 @@ const StyledSidebar = styled.div`
   justify-content: space-between;
   flex-direction: column;
   padding: 40px 10px;
-  width: 250px;
   height: 100vh;
 `;
 

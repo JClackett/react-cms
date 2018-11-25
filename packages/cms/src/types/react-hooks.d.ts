@@ -1,5 +1,9 @@
 import * as React from "react";
 
+declare module "react-dom" {
+  function createRoot(_: any): any;
+}
+
 declare module "react" {
   //
   // Hooks

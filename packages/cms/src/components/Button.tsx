@@ -3,12 +3,7 @@ import { Button as AntButton } from "antd";
 
 const Button: SFC<any> = props => {
   return (
-    <AntButton
-      onClick={props.onClick}
-      type={props.type}
-      block
-      htmlType="submit"
-    >
+    <AntButton {...props} block htmlType="submit">
       {props.text}
     </AntButton>
   );

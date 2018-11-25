@@ -33,14 +33,15 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-ReactDOM.render(
+const App = () => (
   <ApolloProvider client={client}>
     <ApolloHooksProvider client={client}>
       <GlobalStyle />
       <Application />
     </ApolloHooksProvider>
-  </ApolloProvider>,
-  document.getElementById("root")
+  </ApolloProvider>
 );
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 
 serviceWorker.unregister();

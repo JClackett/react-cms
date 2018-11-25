@@ -127,6 +127,31 @@ export interface FindPageVariables {
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL query operation: ListCollections
+// ====================================================
+
+export interface ListCollections_listCollections_blocks {
+  __typename: "Block";
+  id: string;
+  type: string;
+  content: string | null;
+}
+
+export interface ListCollections_listCollections {
+  __typename: "Collection";
+  id: string;
+  name: string;
+  blocks: (ListCollections_listCollections_blocks | null)[] | null;
+}
+
+export interface ListCollections {
+  listCollections: (ListCollections_listCollections | null)[] | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================

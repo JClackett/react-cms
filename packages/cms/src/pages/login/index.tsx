@@ -35,6 +35,7 @@ const StyledLogin = styled.div`
   justify-content: center;
   position: fixed;
   overflow: auto;
+  padding-bottom: 100px;
   top: 0;
   right: 0;
   bottom: 0;
