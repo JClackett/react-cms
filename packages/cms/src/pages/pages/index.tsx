@@ -1,31 +1,33 @@
 import React, { memo } from "react";
 import { Query } from "react-apollo";
-import { LIST_PAGES } from "../../graphql/queries";
-import { ListPages } from "../../graphql/types";
 
 import { Card } from "antd";
 import { Link } from "@reach/router";
+import { useQuery } from "react-apollo-hooks";
 
-function Home(_: any) {
+import { FindPagesQuery, FindPagesQuery_pages } from "../../graphql/types";
+import { FIND_PAGES } from "../../graphql/page/queries";
+import { ApolloQueryResult } from "apollo-boost";
+
+function Pages({  }: { path: string }) {
+  const { data, errors }: ApolloQueryResult<FindPagesQuery> = useQuery(
+    FIND_PAGES
+  );
+  if (errors || !data.pages) return null;
+  const { pages } = data;
   return (
-    <Query<ListPages> query={LIST_PAGES}>
-      {({ data, error, loading }) => {
-        if (loading || error || !data || !data.listPages) return null;
-        return (
-          <div>
-            <h2>Home</h2>
-            {data.listPages.map(({ slug, name }: any) => (
-              <Card key={slug} title={name} style={{ width: 300 }}>
-                <Link to={`/${slug}`} key={slug}>
-                  <p>{slug}</p>
-                </Link>
-              </Card>
-            ))}
-          </div>
-        );
-      }}
-    </Query>
+    <div>
+      <h2>Pages</h2>
+      {pages &&
+        pages.map((page: FindPagesQuery_pages | null) => (
+          <Card key={page!.slug} title={name} style={{ width: 300 }}>
+            <Link to={page!.slug} key={page!.slug}>
+              <p>{page!.slug}</p>
+            </Link>
+          </Card>
+        ))}
+    </div>
   );
 }
 
-export default memo(Home);
+export default memo(Pages);

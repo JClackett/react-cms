@@ -5,9 +5,8 @@ import { useMutation } from "react-apollo-hooks";
 import styled from "styled-components";
 
 import Button from "../Button";
-import { LOGOUT } from "../../graphql/queries";
 import Menu from "./Menu";
-import Sider from "antd/lib/layout/Sider";
+import { LOGOUT } from "../../graphql/user/queries";
 
 function Sidebar() {
   const context = useContext(AppContext);

@@ -20,6 +20,8 @@ export default class Block extends BaseEntity {
   @Column("text", { nullable: true })
   content: string;
 
-  @ManyToOne(() => Collection, collection => collection.blocks)
+  @ManyToOne(() => Collection, collection => collection.blocks, {
+    onDelete: "CASCADE"
+  })
   collection: Collection;
 }

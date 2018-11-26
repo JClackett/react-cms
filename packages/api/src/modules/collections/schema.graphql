@@ -4,10 +4,8 @@ type Collection {
 	blocks: [Block]
 }
 
-type Query {
-	listCollections: [Collection]
-}
-
 type Mutation {
-	createCollection(name: String!): Collection
+	createCollection(name: String!, page: String!): Collection
+	updateCollection(id: String!, name: String!): Boolean
+	deleteCollection(id: String!): Boolean
 }

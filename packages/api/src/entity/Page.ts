@@ -3,8 +3,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   BaseEntity,
-  ManyToMany,
-  JoinTable
+  OneToMany
 } from "typeorm";
 import { Collection } from ".";
 
@@ -19,11 +18,6 @@ export default class Page extends BaseEntity {
   @Column("text", { unique: true })
   slug: string;
 
-  @ManyToMany(() => Collection, collection => collection.pages, {
-    cascade: true
-  })
-  @JoinTable({
-    name: "_page_collections"
-  })
+  @OneToMany(() => Collection, collection => collection.page)
   collections: Collection[];
 }

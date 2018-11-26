@@ -2,6 +2,129 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: UpdateBlock
+// ====================================================
+
+export interface UpdateBlock {
+  updateBlock: boolean | null;
+}
+
+export interface UpdateBlockVariables {
+  id: string;
+  content: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: CreateCollection
+// ====================================================
+
+export interface CreateCollection_createCollection {
+  __typename: "Collection";
+  name: string;
+}
+
+export interface CreateCollection {
+  createCollection: CreateCollection_createCollection | null;
+}
+
+export interface CreateCollectionVariables {
+  name: string;
+  page: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: UpdateCollection
+// ====================================================
+
+export interface UpdateCollection {
+  updateCollection: boolean | null;
+}
+
+export interface UpdateCollectionVariables {
+  id: string;
+  name: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: DeleteCollection
+// ====================================================
+
+export interface DeleteCollection {
+  deleteCollection: boolean | null;
+}
+
+export interface DeleteCollectionVariables {
+  id: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: FindPagesQuery
+// ====================================================
+
+export interface FindPagesQuery_pages {
+  __typename: "Page";
+  id: string;
+  name: string;
+  slug: string;
+}
+
+export interface FindPagesQuery {
+  pages: (FindPagesQuery_pages | null)[] | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: FindPageQuery
+// ====================================================
+
+export interface FindPageQuery_page_collections_blocks {
+  __typename: "Block";
+  id: string;
+  type: string;
+  content: string | null;
+}
+
+export interface FindPageQuery_page_collections {
+  __typename: "Collection";
+  id: string;
+  name: string;
+  blocks: (FindPageQuery_page_collections_blocks | null)[] | null;
+}
+
+export interface FindPageQuery_page {
+  __typename: "Page";
+  id: string;
+  name: string;
+  slug: string;
+  collections: (FindPageQuery_page_collections | null)[] | null;
+}
+
+export interface FindPageQuery {
+  page: FindPageQuery_page | null;
+}
+
+export interface FindPageQueryVariables {
+  slug: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: Me
 // ====================================================
 
@@ -68,85 +191,6 @@ export interface Register {
 export interface RegisterVariables {
   name: string;
   password: string;
-}
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL query operation: ListPages
-// ====================================================
-
-export interface ListPages_listPages {
-  __typename: "Page";
-  id: string;
-  name: string;
-  slug: string;
-}
-
-export interface ListPages {
-  listPages: (ListPages_listPages | null)[] | null;
-}
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL query operation: FindPage
-// ====================================================
-
-export interface FindPage_findPage_collections_blocks {
-  __typename: "Block";
-  id: string;
-  type: string;
-}
-
-export interface FindPage_findPage_collections {
-  __typename: "Collection";
-  id: string;
-  name: string;
-  blocks: (FindPage_findPage_collections_blocks | null)[] | null;
-}
-
-export interface FindPage_findPage {
-  __typename: "Page";
-  id: string;
-  name: string;
-  slug: string;
-  collections: (FindPage_findPage_collections | null)[] | null;
-}
-
-export interface FindPage {
-  findPage: FindPage_findPage | null;
-}
-
-export interface FindPageVariables {
-  slug: string;
-}
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL query operation: ListCollections
-// ====================================================
-
-export interface ListCollections_listCollections_blocks {
-  __typename: "Block";
-  id: string;
-  type: string;
-  content: string | null;
-}
-
-export interface ListCollections_listCollections {
-  __typename: "Collection";
-  id: string;
-  name: string;
-  blocks: (ListCollections_listCollections_blocks | null)[] | null;
-}
-
-export interface ListCollections {
-  listCollections: (ListCollections_listCollections | null)[] | null;
 }
 
 /* tslint:disable */

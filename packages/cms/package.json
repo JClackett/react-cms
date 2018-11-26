@@ -25,7 +25,7 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"schema:download": "apollo schema:download --endpoint=http://localhost:5000/graphql",
-		"codegen:generate": "apollo client:codegen --includes=src/graphql/queries.tsx --localSchemaFile=schema.json --outputFlat --target=typescript src/graphql/types.tsx",
+		"codegen:generate": "apollo client:codegen --includes=src/graphql/**/*.tsx --localSchemaFile=schema.json --outputFlat --target=typescript src/graphql/types.tsx",
 		"gen:types": "npm run schema:download && npm run codegen:generate"
 	},
 	"eslintConfig": {
@@ -44,6 +44,7 @@
 		"@types/reach__router": "^1.2.2",
 		"@types/react": "^16.7.7",
 		"@types/react-dom": "^16.0.10",
-		"@types/styled-components": "^4.1.1"
+		"@types/styled-components": "^4.1.1",
+		"tslint": "^5.11.0"
 	}
 }

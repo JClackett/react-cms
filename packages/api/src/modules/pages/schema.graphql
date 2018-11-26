@@ -6,8 +6,8 @@ type Page {
 }
 
 type Query {
-	listPages: [Page]
-	findPage(slug: String!): Page
+	pages: [Page]
+	page(slug: String!): Page
 }
 
 type Mutation {

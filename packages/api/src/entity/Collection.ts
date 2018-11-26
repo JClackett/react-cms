@@ -4,7 +4,7 @@ import {
   Column,
   BaseEntity,
   OneToMany,
-  ManyToMany
+  ManyToOne
 } from "typeorm";
 import { Page, Block } from ".";
 
@@ -16,8 +16,10 @@ export default class Collection extends BaseEntity {
   @Column("text")
   name: string;
 
-  @ManyToMany(() => Page, page => page.collections)
-  pages: Page[];
+  @ManyToOne(() => Page, page => page.collections, {
+    onDelete: "CASCADE"
+  })
+  page: Page;
 
   @OneToMany(() => Block, block => block.collection)
   blocks: Block[];

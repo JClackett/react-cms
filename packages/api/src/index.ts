@@ -24,12 +24,11 @@ const corsUrl =
 
 const startServer = async () => {
   try {
-    const connection = await createConnection();
+    await createConnection();
     const server = new ApolloServer({
-      // These will be defined for both new or existing servers
       ...schema,
       introspection: true,
-      context: ({ req, res }: any) => ({ req, res, connection })
+      context: ({ req, res }: any) => ({ req, res })
     });
 
     const app = express();

@@ -1,10 +1,10 @@
 import React, { useContext, memo } from "react";
 import { AppContext } from "../application/context";
-import LoginPage from "../pages/login";
+import Login from "../components/Login";
 
 function Auth(props: any) {
   const { user } = useContext(AppContext);
-  return user ? props.children : <LoginPage />;
+  return user ? props.children : <Login />;
 }
 
 export default memo(Auth);

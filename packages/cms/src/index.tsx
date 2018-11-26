@@ -42,6 +42,10 @@ const App = () => (
   </ApolloProvider>
 );
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+const root = document.getElementById("root");
+
+ReactDOM.render(<App />, root);
+// Concurrent Mode
+// ReactDOM.createRoot(root).render(<App />);
 
 serviceWorker.unregister();

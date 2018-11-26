@@ -6,4 +6,5 @@ type Block {
 
 type Mutation {
 	createBlock(type: String!, content: String, collection: String!): Block
+	updateBlock(id: String!, content: String!): Boolean
 }

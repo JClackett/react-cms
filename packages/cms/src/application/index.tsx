@@ -7,17 +7,17 @@ import { Spin, Icon, Layout } from "antd";
 import { theme } from "./themes";
 import { AppContext } from "./context";
 
+import { ME } from "../graphql/user/queries";
+
 import Home from "../pages/home";
+import Page from "../pages/page";
 import Pages from "../pages/pages";
-import Collections from "../pages/collections";
-import EditPage from "../pages/editPage";
 import SiteSettings from "../pages/siteSettings";
 
 import Sidebar from "../components/Sidebar";
 import Auth from "../components/Auth";
-import { ME } from "../graphql/queries";
 
-function Application(props: any) {
+function Application() {
   const client: any = useApolloClient();
   const handleLogout = () => {
     client.resetStore();
@@ -60,9 +60,8 @@ function Application(props: any) {
                       <Router>
                         <Home path="/" />
                         <Pages path="/pages" />
-                        <Collections path="/collections" />
+                        <Page path="/pages/:slug" />
                         <SiteSettings path="/settings" />
-                        <EditPage path="/:slug" />
                       </Router>
                     </Suspense>
                   </Layout.Content>

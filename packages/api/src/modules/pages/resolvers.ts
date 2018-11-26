@@ -3,19 +3,17 @@ import { Page } from "../../entity";
 
 const resolvers: IResolvers = {
   Query: {
-    listPages: async (_, __, { req }) => {
+    pages: async (_, __, { req }) => {
       if (!req.session || !req.session.userId) throw new Error("unauthorized");
       const pages = await Page.find();
       return pages;
     },
-    findPage: async (_, { slug }, { req, connection }) => {
+    page: async (_, { slug }, { req }) => {
       if (!req.session || !req.session.userId) throw new Error("unauthorized");
-      const page = await connection
-        .getRepository(Page)
-        .findOne(
-          { where: { slug } },
-          { relations: ["collections", "collections.blocks"] }
-        );
+      const page = await Page.findOne({
+        where: { slug },
+        relations: ["collections", "collections.blocks"]
+      });
       if (!page) throw new Error("not found");
       return page;
     }

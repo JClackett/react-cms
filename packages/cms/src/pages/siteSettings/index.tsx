@@ -1,12 +1,13 @@
 import React, { memo } from "react";
 import { Query } from "react-apollo";
-import { LIST_PAGES } from "../../graphql/queries";
+
 import { Card } from "antd";
 import { Link } from "@reach/router";
+import { FIND_PAGES } from "../../graphql/page/queries";
 
 function SiteSettings(_: any) {
   return (
-    <Query query={LIST_PAGES}>
+    <Query query={FIND_PAGES}>
       {({ data, error, loading }) => {
         if (loading || error || !data || !data.listPages) return null;
         return (

@@ -12,13 +12,6 @@ function Menu() {
         </Link>
       </AntMenu.Item>
 
-      <AntMenu.Item key="collections">
-        <Link to="/collections">
-          <Icon type="appstore" />
-          Collections
-        </Link>
-      </AntMenu.Item>
-
       <AntMenu.Item key="settings">
         <Link to="/settings">
           <Icon type="setting" />
