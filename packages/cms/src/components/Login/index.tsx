@@ -46,6 +46,7 @@ function LoginPage(): any {
             placeholder="Name"
             size="large"
             value={name}
+            style={{ height: "auto" }}
             onChange={e => {
               e.preventDefault();
               setName(e.target.value);

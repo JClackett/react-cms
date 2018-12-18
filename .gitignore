@@ -5,3 +5,4 @@ temp/
 .netlify
 dist/
 build/
+.cache

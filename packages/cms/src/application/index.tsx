@@ -52,7 +52,6 @@ function Application() {
                   </Layout.Sider>
                   <Layout.Content style={{ padding: theme.paddingMedium }}>
                     <Suspense
-                      maxDuration={1000}
                       fallback={
                         <Icon type="loading" style={{ fontSize: 30 }} spin />
                       }

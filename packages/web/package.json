@@ -1,5 +1,5 @@
 {
-	"name": "cms",
+	"name": "web",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
@@ -19,7 +19,7 @@
 		"typescript": "^3.1.6"
 	},
 	"scripts": {
-		"start": "parcel src/templates/index.html --port 3000 --no-cache",
+		"start": "parcel src/templates/index.html --port 3001 --no-cache",
 		"build": "rm -rf dist && NODE_ENV=production parcel build src/templates/index.html",
 		"schema:download": "apollo schema:download --endpoint=http://localhost:5000/graphql",
 		"codegen:generate": "apollo client:codegen --includes=src/graphql/**/*.tsx --localSchemaFile=schema.json --outputFlat --target=typescript src/graphql/types.tsx",

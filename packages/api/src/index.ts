@@ -20,7 +20,9 @@ const redisOptions: any = {
 
 const env = process.env.NODE_ENV || "development";
 const corsUrl =
-  env == "production" ? "https://some-url.com" : "http://localhost:3000";
+  env == "production"
+    ? "https://some-url.com"
+    : ["http://localhost:3000", "http://localhost:3001"];
 
 const startServer = async () => {
   try {
