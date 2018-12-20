@@ -7,9 +7,10 @@ type Page {
 
 type Query {
 	pages: [Page]
-	page(slug: String!): Page
+	page(id: String!): Page
 }
 
 type Mutation {
 	createPage(name: String!, slug: String!): Page
+	updatePage(id: String!, name: String!): Boolean
 }

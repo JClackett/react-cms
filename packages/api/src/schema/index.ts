@@ -6,6 +6,6 @@ const resolversArray = fileLoader(path.join(__dirname, "../modules/**/*.ts"));
 const typesArray = fileLoader(path.join(__dirname, "../modules/**/*.graphql"));
 
 export default {
-  typeDefs: gql(mergeTypes(typesArray, { all: true })),
-  resolvers: mergeResolvers(resolversArray)
+	typeDefs: gql(mergeTypes(typesArray, { all: true })),
+	resolvers: mergeResolvers(resolversArray),
 };

@@ -118,7 +118,23 @@ export interface FindPageQuery {
 }
 
 export interface FindPageQueryVariables {
-  slug: string;
+  id: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: UpdatePage
+// ====================================================
+
+export interface UpdatePage {
+  updatePage: boolean | null;
+}
+
+export interface UpdatePageVariables {
+  id: string;
+  name: string;
 }
 
 /* tslint:disable */

@@ -1,13 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
 import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, theme } from "./application/theme";
 import * as serviceWorker from "./serviceWorker";
 import Application from "./application";
-
-import "./index.css";
 
 const uri =
   process.env.NODE_ENV == "production"
@@ -23,9 +20,14 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    font-family: "Avenir", Consolas, Inconsolata, sans-serif;
+    font-family: "Avenir", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    text-decoration: none;
+    color: ${theme.colorText}
   }
 
   * {
@@ -34,12 +36,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => (
-  <ApolloProvider client={client}>
-    <ApolloHooksProvider client={client}>
-      <GlobalStyle />
-      <Application />
-    </ApolloHooksProvider>
-  </ApolloProvider>
+  <ApolloHooksProvider client={client}>
+    <GlobalStyle />
+    <Application />
+  </ApolloHooksProvider>
 );
 
 const root = document.getElementById("root");
