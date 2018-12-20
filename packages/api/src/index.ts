@@ -2,7 +2,6 @@ import "reflect-metadata";
 import "dotenv/config";
 import { createConnection } from "typeorm";
 import { ApolloServer } from "apollo-server-express";
-// import { buildSchema } from "type-graphql";
 import * as express from "express";
 import * as session from "express-session";
 import * as Redis from "connect-redis";
@@ -32,15 +31,6 @@ const startServer = async () => {
 			...schema,
 			context: ({ req, res }: any) => ({ req, res }),
 		});
-
-		// const server = new ApolloServer({
-		// 	schema: await buildSchema({
-		// 		resolvers: [__dirname + "/modules/**/resolver.*"],
-		// 	}),
-		// 	context: ({ req }: any) => ({
-		// 		req,
-		// 	}),
-		// });
 
 		const app = express();
 

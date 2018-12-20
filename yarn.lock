@@ -1079,16 +1079,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/glob@^7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.1.tgz#aa59a1c6e3fbc421e07ccd31a944c30eba521575"
-  integrity sha512-1Bh06cbWJUHMC97acuD6UMG29nMt0Aqz1vF3guLfG+kHHJhy3AyohZFFxYk2f7Q1SQIrNwvncxAE0N/9s70F2w==
-  dependencies:
-    "@types/events" "*"
-    "@types/minimatch" "*"
-    "@types/node" "*"
-
-"@types/graphql@^14.0.2", "@types/graphql@^14.0.3":
+"@types/graphql@^14.0.3":
   version "14.0.3"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-14.0.3.tgz#389e2e5b83ecdb376d9f98fae2094297bc112c1c"
   integrity sha512-TcFkpEjcQK7w8OcrQcd7iIBPjU0rdyi3ldj6d0iJ4PPSzbWqPBvXj9KSwO14hTOX2dm9RoiH7VuxksJLNYdXUQ==
@@ -1112,11 +1103,6 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.0.tgz#5a7306e367c539b9f6543499de8dd519fac37a8b"
   integrity sha512-A2TAGbTFdBw9azHbpVd+/FkdW2T6msN1uct1O9bH3vTerEHKZhTXJUQXy+hNq1B0RagfU8U+KBdqiZpxjhOUQA==
-
-"@types/minimatch@*":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
-  integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
 "@types/morgan@^1.7.35":
   version "1.7.35"
@@ -2358,14 +2344,6 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
-
-class-validator@>=0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/class-validator/-/class-validator-0.9.1.tgz#d60e58c5d14abca0a41bce38cf792ad4c46d1531"
-  integrity sha512-3wApflrd3ywVZyx4jaasGoFt8pmo4aGLPPAEKCKCsTRWVGPilahD88q3jQjRQwja50rl9a7rsP5LAxJYwGK8/Q==
-  dependencies:
-    google-libphonenumber "^3.1.6"
-    validator "10.4.0"
 
 clean-stack@^1.3.0:
   version "1.3.0"
@@ -3917,11 +3895,6 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
-google-libphonenumber@^3.1.6:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/google-libphonenumber/-/google-libphonenumber-3.2.1.tgz#0395f7099ba05012abad78685955e8ba5cdd6373"
-  integrity sha512-SUE8hWi8sJSK00NSuD+lJWVUNJtmoHRjXlAcN6dR3kTc4HYY7rey6/LfOC6COW8Wup07Fup1p0Tao57liq9HRA==
-
 got@^6.7.1:
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/got/-/got-6.7.1.tgz#240cd05785a9a18e561dc1b44b41c763ef1e8db0"
@@ -4007,13 +3980,6 @@ graphql-extensions@0.4.1:
   integrity sha512-Xei4rBxbsTHU6dYiq9y1xxbpRMU3+Os7yD3vXV5W4HbTaxRMizDmu6LAvV4oBEi0ttwICHARQjYTjDTDhHnxrQ==
   dependencies:
     "@apollographql/apollo-tools" "^0.2.6"
-
-graphql-query-complexity@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/graphql-query-complexity/-/graphql-query-complexity-0.2.2.tgz#c90951b4cdb88a35e9595e833b9cd7fb6294983c"
-  integrity sha512-Z2MEPILOZo7B6Tpa/Fct4h0cLZj7MwPRZftN+3x9my5IIEEh6BlOmPr74/wM3uaGrOWLCDXYPQ46Hvli2YM3eg==
-  dependencies:
-    lodash.get "^4.4.2"
 
 graphql-subscriptions@^1.0.0:
   version "1.0.0"
@@ -5035,7 +5001,7 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
-lodash.get@^4, lodash.get@^4.4.2:
+lodash.get@^4:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
   integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
@@ -8052,21 +8018,6 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-type-graphql@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/type-graphql/-/type-graphql-0.15.0.tgz#755483d8350635334bb6b71305adbafb0445d04b"
-  integrity sha512-WJbumeTYsycwSqqJQ4cfWXKCh0siApcL2UqR6NKkZPK8PhD4C5fsu00Vohu+Q6+SeDq0f89HxIPQEDSHX5WTJA==
-  dependencies:
-    "@types/glob" "^7.1.1"
-    "@types/graphql" "^14.0.2"
-    "@types/node" "^10.11.7"
-    class-validator ">=0.9.1"
-    glob "^7.1.3"
-    graphql "^14.0.2"
-    graphql-query-complexity "^0.2.2"
-    graphql-subscriptions "^1.0.0"
-    tslib "^1.9.3"
-
 type-is@^1.6.16, type-is@~1.6.16:
   version "1.6.16"
   resolved "https://registry.yarnpkg.com/type-is/-/type-is-1.6.16.tgz#f89ce341541c672b25ee7ae3c73dee3b2be50194"
@@ -8320,11 +8271,6 @@ v8-compile-cache@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.2.tgz#a428b28bb26790734c4fc8bc9fa106fccebf6a6c"
   integrity sha512-1wFuMUIM16MDJRCrpbpuEPTUGmM5QMUg0cr3KFwra2XgOgFcPGDQHDh3CszSCD2Zewc/dh/pamNEW8CbfDebUw==
-
-validator@10.4.0:
-  version "10.4.0"
-  resolved "https://registry.yarnpkg.com/validator/-/validator-10.4.0.tgz#ee99a44afb3bb5ed350a159f056ca72a204cfc3c"
-  integrity sha512-Q/wBy3LB1uOyssgNlXSRmaf22NxjvDNZM2MtIQ4jaEOAB61xsh1TQxsq1CgzUMBV1lDrVMogIh8GjG1DYW0zLg==
 
 vary@^1, vary@~1.1.2:
   version "1.1.2"
