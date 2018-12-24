@@ -1,8 +1,7 @@
 import React, { memo, Suspense } from "react";
 import { Router } from "@reach/router";
-import styled, { ThemeProvider } from "./theme";
+import styled, { ThemeProvider, theme } from "./theme";
 import { useApolloClient, useQuery } from "react-apollo-hooks";
-import { theme } from "./theme";
 import { AppContext } from "./context";
 
 import { ME } from "../graphql/user/queries";

@@ -1,0 +1,38 @@
+---
+name: Button
+route: /button
+---
+
+import Button from "./Button";
+import { Playground, PropsTable } from "docz";
+
+# Button
+
+## Basic usage
+
+<Playground>
+	<Button onClick={() => alert("Clicked")}>Click me</Button>
+</Playground>
+
+## With different colors
+
+<Playground>
+	<Button onClick={() => alert("Clicked")} variant="primary">
+		Click me
+	</Button>
+	<Button onClick={() => alert("Clicked")} variant="warning">
+		Click me
+	</Button>
+</Playground>
+
+## With different sizes
+
+<Playground>
+	<Button onClick={() => alert("Clicked")} variant="primary" full>
+		Full
+	</Button>
+</Playground>
+
+## Props
+
+<PropsTable of={Button} />

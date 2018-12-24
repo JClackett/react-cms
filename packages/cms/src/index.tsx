@@ -1,19 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ApolloClient from "apollo-boost";
-import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
+import { ApolloProvider } from "react-apollo-hooks";
 import { createGlobalStyle, theme } from "./application/theme";
 import * as serviceWorker from "./serviceWorker";
 import Application from "./application";
 
 const uri =
-  process.env.NODE_ENV == "production"
-    ? "https://some-url.com"
-    : "http://localhost:5000/graphql";
+	process.env.NODE_ENV == "production"
+		? "https://some-url.com"
+		: "http://localhost:5000/graphql";
 
 const client = new ApolloClient({
-  uri,
-  credentials: "include"
+	uri,
+	credentials: "include",
 });
 
 const GlobalStyle = createGlobalStyle`
@@ -36,10 +36,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => (
-  <ApolloHooksProvider client={client}>
-    <GlobalStyle />
-    <Application />
-  </ApolloHooksProvider>
+	<ApolloProvider client={client}>
+		<GlobalStyle />
+		<Application />
+	</ApolloProvider>
 );
 
 const root = document.getElementById("root");

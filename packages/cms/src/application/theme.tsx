@@ -1,13 +1,14 @@
 import * as styledComponents from "styled-components";
 import { ThemedStyledComponentsModule } from "styled-components";
 
-export const theme: ThemeInterface = {
+const theme: ThemeInterface = {
 	paddingExtraSmall: "5px",
 	paddingSmall: "10px",
 	paddingMedium: "20px",
 	paddingLarge: "40px",
 	borderRadius: "4px",
 	colorPink: "hotpink",
+	colorRed: "tomato",
 	colorBackground: "#f5f6fb",
 	colorOrange: "coral",
 	colorGreen: "mediumseagreen",
@@ -26,6 +27,7 @@ interface ThemeInterface {
 	paddingLarge: string;
 	borderRadius: string;
 	colorPink: string;
+	colorRed: string;
 	colorBackground: string;
 	colorOrange: string;
 	colorGreen: string;
@@ -44,5 +46,5 @@ const {
 	ThemeProvider,
 } = styledComponents as ThemedStyledComponentsModule<ThemeInterface>;
 
-export { css, createGlobalStyle, keyframes, ThemeProvider };
+export { theme, css, createGlobalStyle, keyframes, ThemeProvider };
 export default styled;

@@ -1,30 +1,52 @@
-import React, { SFC, memo, ButtonHTMLAttributes } from "react";
+import React, { SFC } from "react";
 import styled from "../../application/theme";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	variant?: string | "primary";
+interface ButtonProps {
+	variant?: "default" | "primary" | "warning";
 	full?: boolean;
+	onClick?: () => void;
 }
 
 const Button: SFC<ButtonProps> = props => {
 	return <StyledButton type="submit" {...props} />;
 };
 
-export default memo(Button);
+Button.defaultProps = {
+	variant: "default",
+	full: false,
+	onClick: () => {},
+};
 
-const StyledButton = styled("button")<{ variant?: string; full?: boolean }>`
+export default Button;
+
+const StyledButton = styled.button<ButtonProps>`
 	outline: 0;
 	cursor: pointer;
 	font-family: inherit;
 	min-width: 180px;
 	font-size: 1rem;
 	border: 0;
-	${p => p.full && "width: 100%"};
-	color: ${p => (p.variant === "primary" ? "#fff" : p.theme.colorText)};
-	background-color: ${p =>
-		p.variant === "primary" ? p.theme.colorPrimary : "transparent"};
-	border-radius: ${p => p.theme.borderRadius};
-	border: 1px solid
-		${p => (p.variant === "primary" ? p.theme.colorPrimary : p.theme.colorText)};
+	transition: all 0.3s;
+	margin: ${p => p.theme.paddingExtraSmall};
 	padding: ${p => p.theme.paddingExtraSmall};
+	border-radius: ${p => p.theme.borderRadius};
+	width: ${p => (p.full ? "100%" : "auto")};
+	${p => getVariant(p)[p.variant!]};
+	&:hover {
+		opacity: 0.9;
+	}
 `;
+
+const getVariant = (props: any) => ({
+	default: variantStyle("transparent", props.theme.colorText),
+	primary: variantStyle(props.theme.colorPrimary, "white"),
+	warning: variantStyle(props.theme.colorRed, "white"),
+});
+
+function variantStyle(bg: any, color: any) {
+	return `
+		background: ${bg};
+		box-shadow: inset 0 0 0 1px ${color};
+		color: ${color};
+	`;
+}

@@ -19,6 +19,8 @@
 	"scripts": {
 		"start": "parcel src/templates/index.html --port 3000 --no-cache",
 		"build": "rm -rf dist && NODE_ENV=production parcel build src/templates/index.html",
+		"docz:dev": "docz dev",
+		"docz:build": "docz build",
 		"schema:download": "apollo schema:download --endpoint=http://localhost:5000/graphql",
 		"codegen:generate": "apollo client:codegen --includes=src/graphql/**/*.tsx --localSchemaFile=schema.json --outputFlat --target=typescript src/graphql/types.tsx",
 		"gen:types": "yarn schema:download && yarn codegen:generate"
@@ -30,6 +32,7 @@
 		"not op_mini all"
 	],
 	"devDependencies": {
+		"@babel/core": "^7.2.2",
 		"@types/graphql": "^14.0.3",
 		"@types/jest": "^23.3.9",
 		"@types/node": "^10.12.10",
@@ -37,6 +40,8 @@
 		"@types/react": "^16.7.7",
 		"@types/react-dom": "^16.0.10",
 		"@types/styled-components": "^4.1.1",
+		"docz": "^0.13.5",
+		"docz-theme-default": "^0.13.5",
 		"parcel-bundler": "^1.10.3",
 		"sass": "^1.15.2",
 		"tslint": "^5.11.0"
